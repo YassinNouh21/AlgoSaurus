@@ -1,4 +1,7 @@
 from abc import ABC, abstractmethod
+import model.user as User
+from typing import Dict
+
 
 class IAuthentication(ABC):
     """
@@ -6,7 +9,7 @@ class IAuthentication(ABC):
     """
 
     @abstractmethod
-    def sign_in(self, email, password):
+    def sign_in(self, email: str, password: str) -> User:
         """
         Signs in a user using email and password.
 
@@ -15,33 +18,36 @@ class IAuthentication(ABC):
             password (str): The user's password.
 
         Returns:
-            str: The user ID or a token representing the signed-in user.
+            User: The newly signed-up user.
         """
         raise NotImplementedError("Subclasses must implement the sign_in method.")
-
+    
     @abstractmethod
-    def sign_up(self, email, password):
+    def sign_up(self, email: str, password: str, handles: Dict[str, str]) -> User:
         """
         Signs up a new user using email and password.
 
         Args:
             email (str): The user's email.
             password (str): The user's password.
+            handles (Dict[str, str]): A dictionary of handles for competitive programming websites.
+                The keys are the names of the websites (e.g. "Codeforces", "Atcoder", "Codechef"),
+                and the values are the handles for the user on those websites.
 
         Returns:
-            str: The user ID or a token representing the newly signed-up user.
+            User: The newly signed-up user.
         """
         raise NotImplementedError("Subclasses must implement the sign_up method.")
-
+    
     @abstractmethod
-    def sign_out(self):
+    def sign_out(self) -> None:
         """
         Signs out the current user.
         """
         raise NotImplementedError("Subclasses must implement the sign_out method.")
 
     @abstractmethod
-    def reset_password(self, email):
+    def reset_password(self, email: str) -> None:
         """
         Sends a password reset email to the specified email address.
 
