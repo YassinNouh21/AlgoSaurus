@@ -153,6 +153,7 @@ class User:
         """
         return f"Name: {self.name}\nEmail: {self.email}\nHandles: {self.handles}\nHistory: {self.history}\nBookmarks: {self.bookmarks}\nFavorites: {self.favorites}"
 
+
     @classmethod
     def from_dict(cls, data):
         """
