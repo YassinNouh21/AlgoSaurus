@@ -68,3 +68,12 @@ class PasswordResetLinkInvalidError(AuthenticationError):
 
     def __init__(self):
         super().__init__("Password reset link is invalid")
+
+
+class UserAlreadyHasAccount(AuthenticationError):
+    """
+    Error raised when the user already has an account.
+    """
+
+    def __init__(self, email: str):
+        super().__init__(f"User with email {email} already has an account")
