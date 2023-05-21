@@ -152,3 +152,31 @@ class User:
             str: A string representation of the User object.
         """
         return f"Name: {self.name}\nEmail: {self.email}\nHandles: {self.handles}\nHistory: {self.history}\nBookmarks: {self.bookmarks}\nFavorites: {self.favorites}"
+
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Creates a User object from a dictionary.
+
+        Args:
+            data (dict): A dictionary containing the user data.
+
+        Returns:
+            User: The User object.
+
+        Raises:
+            KeyError: If a required field is missing in the data dictionary.
+        """
+        try:
+            user_id = data['user_id']
+            name = data['name']
+            email = data['email']
+            handles = data['handles']
+            history = data['history']
+            bookmarks = data['bookmarks']
+            favorites = data['favorites']
+
+            return cls(name, email, handles, history, bookmarks, favorites, user_id)
+
+        except KeyError as e:
+            raise KeyError(f"Missing required field: {str(e)}") from e
