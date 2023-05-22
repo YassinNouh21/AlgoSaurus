@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import model.user as User
+import authentication.model.user as User
 from typing import Dict
 
 
@@ -38,7 +38,7 @@ class IAuthentication(ABC):
             User: The newly signed-up user.
         """
         raise NotImplementedError("Subclasses must implement the sign_up method.")
-    
+
     @abstractmethod
     def sign_out(self) -> None:
         """
