@@ -37,23 +37,6 @@ class IFirestoreUser(ABC):
         raise NotImplementedError(f"Subclasses must implement the remove_user method.")
 
     @abstractmethod
-    def delete_user_field(self, user_id: str, attribute_name: str) -> None:
-        """
-        Deletes a specific attribute from the user document in Firestore.
-
-        Args:
-            user_id (str): The ID of the user.
-            attribute_name (str): The name of the attribute to be deleted.
-
-        Returns:
-            None
-
-        Raises:
-            NotImplementedError: If the method is not implemented.
-        """
-        raise NotImplementedError(f"Subclasses must implement the delete_user_field method.")
-
-    @abstractmethod
     def edit_user_field(self, user_id: str, attribute_name: str, value: Union[int, float, str, Dict]) -> None:
         """
         Edits a specific attribute of the user document in Firestore.
