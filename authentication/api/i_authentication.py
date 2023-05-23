@@ -23,7 +23,7 @@ class IAuthentication(ABC):
         raise NotImplementedError("Subclasses must implement the sign_in method.")
     
     @abstractmethod
-    def sign_up(self, email: str, password: str, handles: Dict[str, str]) -> User:
+    def sign_up(self, email: str, password: str, handles: Dict[str, str], display_name: str) -> User:
         """
         Signs up a new user using email and password.
 
@@ -33,6 +33,7 @@ class IAuthentication(ABC):
             handles (Dict[str, str]): A dictionary of handles for competitive programming websites.
                 The keys are the names of the websites (e.g. "Codeforces", "Atcoder", "Codechef"),
                 and the values are the handles for the user on those websites.
+            display_name (str): The user's display name.
 
         Returns:
             User: The newly signed-up user.
